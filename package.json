@@ -1,0 +1,23 @@
+{
+  "name": "anykka_backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antony11659/anykka_backend.git"
+  },
+  "author": "Anton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antony11659/anykka_backend/issues"
+  },
+  "homepage": "https://github.com/Antony11659/anykka_backend#readme",
+  "description": "",
+  "dependencies": {
+    "fastify": "^5.2.2"
+  }
+}
