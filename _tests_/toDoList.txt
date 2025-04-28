@@ -1,0 +1,1 @@
+- chinese sentences in a sentences table should be an array ( create chinese_sentences_translation_ table ß)

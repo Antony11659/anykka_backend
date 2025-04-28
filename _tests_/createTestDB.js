@@ -33,6 +33,7 @@ export const createSentenceEnglishTranslationsTable = (db) => {
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           sentence_id INTEGER NOT NULL,
           translation TEXT NOT NULL,
+          popularity INTEGER NOT NULL DEFAULT 0,
           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           FOREIGN KEY (sentence_id) REFERENCES sentences(id) ON DELETE CASCADE
 );
@@ -58,19 +59,12 @@ export const createSentencesTable = (db) => {
           pinyin TEXT CHECK(pinyin IS NULL OR length(pinyin) > 0),
         
           -- Attempt tracking with constraints
-          attempts_total INTEGER NOT NULL DEFAULT 0 CHECK(attempts_total >= 0),
           attempts_english INTEGER NOT NULL DEFAULT 0 CHECK(attempts_english >= 0),
           attempts_chinese INTEGER NOT NULL DEFAULT 0 CHECK(attempts_chinese >= 0),
           
-          -- Practice preferences
-          english_guess INTEGER NOT NULL DEFAULT 1 CHECK(english_guess IN (0, 1)),
-          chinese_guess INTEGER NOT NULL DEFAULT 0 CHECK(chinese_guess IN (0, 1)),
-          
           -- Correct guesses with constraints
-          correct_english INTEGER NOT NULL DEFAULT 0 
-            CHECK(correct_english >= 0 AND correct_english <= attempts_english),
-          correct_chinese INTEGER NOT NULL DEFAULT 0 
-            CHECK(correct_chinese >= 0 AND correct_chinese <= attempts_chinese),
+          correct_answers_english INTEGER NOT NULL DEFAULT 0,
+          correct_answers_chinese INTEGER NOT NULL DEFAULT 0,
           
           -- Timestamps
           created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
